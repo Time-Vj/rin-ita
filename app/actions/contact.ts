@@ -2,7 +2,10 @@
 
 import { Resend } from "resend"
 
-const resend = new Resend("")
+
+const apiKey = process.env.RESEND_API_KEY;
+
+const resend = new Resend(`${apiKey}`)
 
 interface ContactFormData {
   nome: string
