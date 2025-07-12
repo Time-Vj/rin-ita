@@ -1,7 +1,8 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect, useRef } from "react"
-import { useActionState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -68,7 +69,24 @@ export default function RinnovaItaliaWebsite() {
   const [servicesRef, servicesVisible] = useScrollAnimation()
   const [locationRef, locationVisible] = useScrollAnimation()
   const [contactRef, contactVisible] = useScrollAnimation()
-  const [state, formAction, isPending] = useActionState(submitContactForm, null)
+  const [formState, setFormState] = useState<{ success: boolean; message: string } | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setFormState(null)
+
+    const formData = new FormData(e.currentTarget)
+    const result = await submitContactForm(null, formData)
+
+    setFormState(result)
+    setIsSubmitting(false)
+
+    if (result.success) {
+      e.currentTarget.reset()
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -497,7 +515,7 @@ export default function RinnovaItaliaWebsite() {
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Invia un Messaggio</h3>
-              <form action={formAction} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2">
@@ -532,21 +550,21 @@ export default function RinnovaItaliaWebsite() {
                 </div>
                 <Button
                   type="submit"
-                  disabled={isPending}
+                  disabled={isSubmitting}
                   className="w-full bg-[#40a644] hover:bg-[#40a644]/90 disabled:opacity-50"
                 >
-                  {isPending ? "Invio in corso..." : "Invia Messaggio"}
+                  {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
                 </Button>
 
-                {state && (
+                {formState && (
                   <div
                     className={`mt-4 p-4 rounded-lg ${
-                      state.success
+                      formState.success
                         ? "bg-green-50 text-green-800 border border-green-200"
                         : "bg-red-50 text-red-800 border border-red-200"
                     }`}
                   >
-                    <p className="font-medium">{state.message}</p>
+                    <p className="font-medium">{formState.message}</p>
                   </div>
                 )}
               </form>
