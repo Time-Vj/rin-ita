@@ -2,7 +2,7 @@
 
 import { Resend } from "resend"
 
-const resend = new Resend("re_iVeLP6zb_NP2wDn9CHhiwsgwyYM3ucQs9")
+const resend = new Resend("")
 
 interface ContactFormData {
   nome: string
