@@ -11,6 +11,7 @@ import { Menu, X, Phone, Mail, MapPin, Leaf, Zap, Home, Users, Award, Clock } fr
 import Image from "next/image"
 
 import { submitContactForm } from "./actions/contact"
+import Link from "next/link"
 
 // Hook for scroll animations
 function useScrollAnimation() {
@@ -143,6 +144,12 @@ export default function RinnovaItaliaWebsite() {
               >
                 Contatti
               </button>
+              <Link
+                href="/login"
+                className="text-gray-700 hover:text-[#40a644] transition-colors"
+              >
+                Accedi
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
