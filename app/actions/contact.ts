@@ -65,11 +65,11 @@ export async function submitContactForm(prevState: any, formData: FormData) {
           <div class="container">
             <div class="test-notice">
               <strong>🧪 MODALITÀ TEST</strong><br>
-              Questa è una email di test per il sito Rinnova Italia. In produzione verrà inviata a commerciale@rinnovaitalia.it
+              Questa è una email di test per il sito Rinnovaitalia. In produzione verrà inviata a commerciale@rinnovaitalia.it
             </div>
             
             <div class="header">
-              <h2>🏠 Nuovo Contatto da Rinnova Italia</h2>
+              <h2>🏠 Nuovo Contatto da Rinnovaitalia</h2>
             </div>
             <div class="content">
               <div class="field">
@@ -101,7 +101,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
               </div>
               
               <div class="footer">
-                <p>Questo messaggio è stato inviato dal modulo contatti del sito web Rinnova Italia.</p>
+                <p>Questo messaggio è stato inviato dal modulo contatti del sito web Rinnovaitalia.</p>
                 <p>Data e ora: ${new Date().toLocaleString("it-IT")}</p>
               </div>
             </div>
@@ -112,7 +112,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
     // Invia email di test alla tua email
     const { data: emailData, error } = await resend.emails.send({
-      from: "Test Rinnova Italia <onboarding@resend.dev>",
+      from: "Test Rinnovaitalia <onboarding@resend.dev>",
       to: ["vulnet.sej@gmail.com"],
       subject: `🧪 [TEST] Nuovo contatto da ${data.nome} ${data.cognome}`,
       html: htmlTemplate,
@@ -157,7 +157,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
             <div class="content">
               <p>Ciao <strong>${data.nome}</strong>,</p>
               
-              <p>Grazie per aver contattato <strong>Rinnova Italia</strong>! Abbiamo ricevuto il tuo messaggio e ti risponderemo il prima possibile.</p>
+              <p>Grazie per aver contattato <strong>Rinnovaitalia</strong>! Abbiamo ricevuto il tuo messaggio e ti risponderemo il prima possibile.</p>
               
               <div class="highlight">
                 <h3>Il tuo messaggio:</h3>
@@ -176,7 +176,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
               
               <div class="footer">
                 <p>Questo è un messaggio automatico di conferma. Non rispondere a questa email.</p>
-                <p><strong>Rinnova Italia</strong> - Efficienza, Sostenibilità, Innovazione</p>
+                <p><strong>Rinnovaitalia</strong> - Efficienza, Sostenibilità, Innovazione</p>
               </div>
             </div>
           </div>
@@ -186,9 +186,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
     // Invia email di conferma al cliente
     await resend.emails.send({
-      from: "Test Rinnova Italia <onboarding@resend.dev>",
+      from: "Test Rinnovaitalia <onboarding@resend.dev>",
       to: [data.email],
-      subject: "✅ [TEST] Conferma ricezione messaggio - Rinnova Italia",
+      subject: "✅ [TEST] Conferma ricezione messaggio - Rinnovaitalia",
       html: confirmationTemplate,
     })
 

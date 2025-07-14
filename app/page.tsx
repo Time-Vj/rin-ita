@@ -101,12 +101,14 @@ export default function RinnovaItaliaWebsite() {
             <div className="flex items-center space-x-3">
               <Image
                 src="/images/logo-rinnova-italia.png"
-                alt="Rinnova Italia Logo"
+                alt="Rinnovaitalia Logo"
                 width={40}
                 height={40}
                 className="w-10 h-10"
               />
-              <span className="text-xl font-bold text-[#40a644]">Rinnova Italia</span>
+              {/*}
+              <span className="text-xl font-bold text-[#40a644]">Rinnovaitalia</span>
+              */}
             </div>
 
             {/* Desktop Menu */}
@@ -200,7 +202,7 @@ export default function RinnovaItaliaWebsite() {
           >
             <div>
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                Rinnova Italia: <span className="text-[#40a644]">Efficienza</span>,{" "}
+                Rinnovaitalia: <span className="text-[#40a644]">Efficienza</span>,{" "}
                 <span className="text-[#40a644]">Sostenibilità</span>,{" "}
                 <span className="text-[#40a644]">Innovazione</span>
               </h1>
@@ -219,7 +221,7 @@ export default function RinnovaItaliaWebsite() {
               <div className="w-full h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/esterno-negozio.jpg"
-                  alt="Sede Rinnova Italia - Piazzale Clodio 9, Roma"
+                  alt="Sede Rinnovaitalia - Piazzale Clodio 9, Roma"
                   width={600}
                   height={400}
                   className="w-full h-full object-cover"
@@ -241,7 +243,7 @@ export default function RinnovaItaliaWebsite() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Chi Siamo</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Situati nel cuore di Prati a Roma, Rinnova Italia è il nuovo centro dedicato all'efficienza energetica. Il
+              Situati nel cuore di Prati a Roma, Rinnovaitalia è il nuovo centro dedicato all'efficienza energetica. Il
               nostro obiettivo è promuovere soluzioni innovative e sostenibili per ridurre i consumi energetici e
               migliorare la qualità della vita.
             </p>
@@ -317,7 +319,7 @@ export default function RinnovaItaliaWebsite() {
               <div className="w-full h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/ufficio-consultazione.jpg"
-                  alt="Ufficio Rinnova Italia - Ambiente professionale per consulenze"
+                  alt="Ufficio Rinnovaitalia - Ambiente professionale per consulenze"
                   width={600}
                   height={400}
                   className="w-full h-full object-cover"
@@ -414,7 +416,7 @@ export default function RinnovaItaliaWebsite() {
             <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/ufficio-scrivania.jpg"
-                alt="Ufficio moderno Rinnova Italia - Spazio di lavoro professionale"
+                alt="Ufficio moderno Rinnovaitalia - Spazio di lavoro professionale"
                 width={600}
                 height={300}
                 className="w-full h-full object-cover"
@@ -423,7 +425,7 @@ export default function RinnovaItaliaWebsite() {
             <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/ufficio-parete-verde.jpg"
-                alt="Ufficio Rinnova Italia con parete verde brandizzata"
+                alt="Ufficio Rinnovaitalia con parete verde brandizzata"
                 width={600}
                 height={300}
                 className="w-full h-full object-cover"
@@ -488,7 +490,7 @@ export default function RinnovaItaliaWebsite() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Mappa Rinnova Italia - Piazzale Clodio 9, Roma"
+                title="Mappa Rinnovaitalia - Piazzale Clodio 9, Roma"
               ></iframe>
             </div>
           </div>
@@ -630,12 +632,12 @@ export default function RinnovaItaliaWebsite() {
               <div className="flex items-center space-x-3 mb-4">
                 <Image
                   src="/images/logo-rinnova-italia.png"
-                  alt="Rinnova Italia Logo"
+                  alt="Rinnovaitalia Logo"
                   width={40}
                   height={40}
                   className="w-10 h-10"
                 />
-                <span className="text-xl font-bold">Rinnova Italia</span>
+                <span className="text-xl font-bold">Rinnovaitalia</span>
               </div>
               <p className="text-gray-400">
                 Il tuo partner di fiducia per l'efficienza energetica a Roma. Trasformiamo la tua casa in un ambiente
@@ -689,7 +691,7 @@ export default function RinnovaItaliaWebsite() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2024 Rinnova Italia. Tutti i diritti riservati.</p>
+            <p className="text-gray-400 text-sm">© 2024 Rinnovaitalia. Tutti i diritti riservati.</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
                 Privacy Policy
