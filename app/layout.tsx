@@ -30,10 +30,15 @@ export const metadata: Metadata = {
     description:
       "Il tuo partner per l'efficienza energetica a Roma. Consulenze, ristrutturazioni e prodotti eco-friendly.",
   },
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#40a644",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
+
+export const viewport = {
+  themeColor: "#40a644",
+  width: "device-width",
+  viewport: "width=device-width, initial-scale=1",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,

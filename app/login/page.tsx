@@ -1,4 +1,30 @@
-export default function Login() {
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      setMessage(data.error || 'Login failed');
+    } else {
+      window.location.href = '/dashboard';
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
       <div className="flex w-full max-w-5xl rounded-2xl overflow-hidden shadow-xl border border-gray-200">
@@ -25,15 +51,18 @@ export default function Login() {
         <div className="w-full md:w-1/2 bg-white text-black px-10 py-12">
           <h2 className="text-3xl font-bold mb-2">Accedi</h2>
           <p className="text-sm text-gray-600 mb-8">
-            Non hai un account? <a href="#" className="text-[#40a644] hover:underline">Registrati</a>
+            Non hai un account?{' '}
+            <Link href="/register" className="text-[#40a644] hover:underline">Registrati</Link>
           </p>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="text-sm block mb-1">Email</label>
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 required
                 className="w-full px-4 py-2 rounded-md bg-gray-100 border border-gray-300 text-sm focus:ring-2 focus:ring-[#40a644] outline-none"
                 placeholder="tuo@email.com"
@@ -44,16 +73,21 @@ export default function Login() {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
                 required
                 className="w-full px-4 py-2 rounded-md bg-gray-100 border border-gray-300 text-sm focus:ring-2 focus:ring-[#40a644] outline-none"
                 placeholder="••••••••"
               />
             </div>
-            <div className="flex items-center space-x-2 text-sm">
-              <input type="checkbox" id="terms" className="accent-[#40a644]" />
-              <label htmlFor="terms">
-                Accetto i <a href="#" className="text-[#40a644] hover:underline">Termini & Condizioni</a>
-              </label>
+            <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="terms" className="accent-[#40a644]" />
+                <label htmlFor="terms">
+                  Accetto i <a href="#" className="text-[#40a644] hover:underline">Termini & Condizioni</a>
+                </label>
+              </div>
+              <a href="#" className="text-[#40a644] hover:underline">Password dimenticata?</a>
             </div>
 
             <button
@@ -63,22 +97,9 @@ export default function Login() {
               Accedi
             </button>
 
-            <div className="flex items-center gap-2 my-4">
-              <div className="h-px bg-gray-300 flex-1" />
-              <span className="text-xs text-gray-400">oppure</span>
-              <div className="h-px bg-gray-300 flex-1" />
-            </div>
-
-            <div className="flex gap-3">
-              <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 rounded-md py-2 hover:bg-gray-100 transition">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="h-5 w-5" />
-                <span className="text-sm">Google</span>
-              </button>
-              <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 rounded-md py-2 hover:bg-gray-100 transition">
-                <img src="https://www.svgrepo.com/show/448255/apple.svg" alt="Apple" className="h-5 w-5" />
-                <span className="text-sm">Apple</span>
-              </button>
-            </div>
+            {message && (
+              <p className="text-center text-red-500 mt-2">{message}</p>
+            )}
           </form>
         </div>
       </div>
