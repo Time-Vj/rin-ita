@@ -14,6 +14,13 @@ model User {
   password  String
   role      Role     @default(CLIENTE)
   createdAt DateTime @default(now())
+
+  // Log cambi ruolo
+  roleChanges      RoleChangeLog[] @relation("RoleChangedUser")
+  roleChangesByMe  RoleChangeLog[] @relation("RoleChangedBy")
+
+  // Clienti gestiti da questo dipendente (relazione 1-n)
+  clients   Client[] @relation("ResponsabileClienti")
 }
 
 enum Role {
@@ -23,3 +30,43 @@ enum Role {
   CLIENTE
 }
 
+model RoleChangeLog {
+  id           String   @id @default(uuid())
+  user         User     @relation("RoleChangedUser", fields: [userId], references: [id])
+  userId       String
+  changedBy    User     @relation("RoleChangedBy", fields: [changedById], references: [id])
+  changedById  String
+  oldRole      Role
+  newRole      Role
+  changedAt    DateTime @default(now())
+}
+
+model Client {
+  id                  String      @id @default(uuid())
+  tipo                String      // "PRIVATO" o "AZIENDA"
+  nome                String?
+  cognome             String?
+  ragioneSociale      String?
+  piva                String?
+  cf                  String?
+  indirizzo           String?
+  telefono            String?
+  email               String?     // <-- FACOLTATIVA!
+  createdAt           DateTime    @default(now())
+  
+  responsabileId      String?
+  responsabile        User?       @relation("ResponsabileClienti", fields: [responsabileId], references: [id])
+
+  documenti           Document[]
+  dataFineContratto   DateTime?   // <-- AGGIUNGI QUESTO!
+}
+
+
+model Document {
+  id         String   @id @default(uuid())
+  url        String   // Percorso/URL del file
+  filename   String
+  clientId   String
+  client     Client   @relation(fields: [clientId], references: [id])
+  uploadedAt DateTime @default(now())
+}

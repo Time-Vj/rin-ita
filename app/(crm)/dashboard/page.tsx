@@ -22,11 +22,7 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-4 shadow rounded">📇 Contacts: 0</div>
-        <div className="bg-white p-4 shadow rounded">💼 Deals: 0</div>
-        <div className="bg-white p-4 shadow rounded">📈 Revenue: $0</div>
-      </div>
+      
     </div>
   );
 }

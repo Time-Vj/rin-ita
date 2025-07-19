@@ -52,6 +52,7 @@ export default function ManageWorkers() {
     }
   }
 
+
   const filteredUsers =
     filterRole === "All" ? users : users.filter((u) => u.role === filterRole);
 

@@ -21,12 +21,35 @@ export async function PUT(request: Request) {
   }
 
   try {
+    // Recupera il ruolo precedente dell'utente
+    const userBefore = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { role: true }
+    });
+
+    if (!userBefore) {
+      return NextResponse.json({ error: "Utente non trovato" }, { status: 404 });
+    }
+
+    // Aggiorna il ruolo
     await prisma.user.update({
       where: { id: userId },
       data: { role },
     });
+
+    // Salva il log della modifica
+    await prisma.roleChangeLog.create({
+      data: {
+        userId: userId,
+        changedById: user.id,
+        oldRole: userBefore.role,
+        newRole: role,
+        // changedAt viene inserito automaticamente
+      }
+    });
+
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ error: 'Errore durante l\'aggiornamento del ruolo' }, { status: 500 });
+    return NextResponse.json({ error: "Errore durante l'aggiornamento del ruolo" }, { status: 500 });
   }
 }
